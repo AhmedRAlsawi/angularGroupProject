@@ -1,0 +1,12 @@
+<section class=" container-md">
+    <div class="ul row">
+        <div class="li col-md-4" *ngFor="let name of title; let i=index">
+            <h5 class="text-dark bg-white rounded">{{name | uppercase}}</h5>
+            <h6 class=" text-dark bg-white rounded">{{"EGP "+ [price[i]]}}</h6>
+            <div class=" text-center row" >
+                <i class=" fa-solid Icon bg-white fa-cart-plus"></i>
+            </div>
+            <img class="w-100 rounded" [src]="src[i]" alt="">
+        </div>
+    </div>
+</section>
