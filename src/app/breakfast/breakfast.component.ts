@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { CartServiceService } from '../cart-service.service';
 
 @Component({
   selector: 'app-breakfast',
@@ -9,7 +10,7 @@ export class BreakfastComponent implements OnInit {
 
   breakFastMeals: any = [];
 
-  constructor() {
+  constructor(private cart: CartServiceService) {
     this.breakFastMeals = [
       {
         id: 1,
@@ -39,6 +40,28 @@ export class BreakfastComponent implements OnInit {
   }
 
   ngOnInit(): void {
+  }
+
+  addToCart(id: any) {
+    console.log("length",this.cart.items.length);
+    console.log("id",id);
+    if (this.cart.items.includes(id)) {
+      let index = this.cart.items.indexOf(id)
+      {
+        if (index > -1) {
+          this.cart.items.splice(index, 1)
+          console.log("after deleting ", this.cart.items)
+          console.log(this.cart.items.length);
+        }
+      }
+    }
+    else {
+      this.cart.items.push(id)
+      console.log("after pushing ", this.cart.items)
+      console.log(this.cart.items.length);
+    }
+
+
   }
 
 }
